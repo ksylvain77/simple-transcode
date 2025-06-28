@@ -1,0 +1,47 @@
+# Transcode Configuration for Linux
+
+# Output paths
+paths:
+  staging: "/mnt/nas/data/staging"    # Staging directory where MKV files are waiting
+  plex: "/mnt/nas/data/media/movies"         # Plex directory where transcoded files go
+  test: "/mnt/nas/data/staging/test"  # Test directory for dummy files
+
+# Test mode
+test_mode: false                      # Set to true to use test directory
+
+# HandBrake presets
+presets:
+  4kUHD:
+    encoder: "nvenc_h265"              # GPU encoder
+    quality: 22                        # GPU quality setting (22 on GPU ≈ 19 on CPU)
+    preset: "p7"                     # Best quality for NVENC
+    audio:
+      lang_list: "eng"                 # English audio tracks
+      encoder: "copy"                  # Pass through all audio
+      fallback: "ac3"                  # Fallback codec
+    format: "mkv"                      # Output format
+
+  bluray:
+    encoder: "nvenc_h265"
+    quality: 20                        # Higher quality for Blu-ray sources
+    preset: "p7"
+    audio:
+      lang_list: "eng"
+      encoder: "copy"
+      fallback: "ac3"
+    format: "mkv"
+  
+  dvd:
+    encoder: "nvenc_h265"
+    quality: 24                        # Lower quality for DVD sources
+    preset: "p7"
+    audio:
+      lang_list: "eng"
+      encoder: "copy"
+      fallback: "ac3"
+    format: "mkv"
+
+# You can add more settings later if needed like:
+# transcoding:
+#   gpu_quality: 24
+#   cpu_quality: 20

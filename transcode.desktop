@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Transcode Pipeline
+Comment=Run the transcoding pipeline
+Exec=gnome-terminal -- bash -c "cd /home/kevin/projects/simple-transcode && ./run_transcode.sh; exec bash"
+Terminal=true
+Type=Application
+Categories=Utility;
+Icon=applications-multimedia 
